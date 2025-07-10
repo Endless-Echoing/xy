@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.content {
+    background-color: white;
+    border-radius: 15px;
+    margin: 40px 20px 0 20px;
+    padding: 35px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    height: 620px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    font-size: 14px;
+}
+
+.file-icon {
+    margin-right: 10px;
+}
+

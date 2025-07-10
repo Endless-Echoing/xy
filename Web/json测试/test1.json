@@ -1,0 +1,30 @@
+{
+  "code": 1,
+  "msg": null,
+  "data": [
+    {
+      "id": 1,
+      "courseCode": "CS101",
+      "courseName": "计算机基础",
+      "teacherId": 101,
+      "teacherName": "张老师",
+      "credit": 3.0,
+      "totalHours": 48,
+      "college": "计算机学院",
+      "semester": "2025春季"
+    },
+    {
+      "id": 2,
+      "courseCode": "ENG201",
+      "courseName": "高级英语",
+      "teacherId": 102,
+      "teacherName": "李老师",
+      "credit": 2.5,
+      "totalHours": 40,
+      "college": "外国语学院",
+      "semester": "2025春季"
+    }
+  ]
+}
+
+
