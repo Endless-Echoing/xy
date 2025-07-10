@@ -538,3 +538,10 @@ document.addEventListener('click', function(e) {
         document.getElementById('group-create-modal').classList.add('hidden');
     }
 });
+
+window.addEventListener('storage', function(e) {
+    if (e.key === 'activeUserId') {
+        // 其它标签页切换了用户，这里可以刷新页面或弹出提示
+        window.location.reload();
+    }
+});

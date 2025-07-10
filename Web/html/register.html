@@ -72,8 +72,8 @@
           <td>
             <select class="form-control" name="gender" required>
               <option value="">请选择</option>
-              <option value="男">男</option>
-              <option value="女">女</option>
+              <option value="�?">�?</option>
+              <option value="�?">�?</option>
             </select>
           </td>
         </tr>
@@ -107,6 +107,8 @@
     </form>
   </div>
   <script>
+    const token = sessionStorage.getItem('Token');
+const userId = sessionStorage.getItem('userId');
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const form = e.target;
@@ -115,7 +117,7 @@
       msg.textContent = '';
       msg.className = '';
       btn.disabled = true;
-      btn.textContent = '注册中...';
+      btn.textContent = '注册�?...';
 
       const data = {
         studentNumber: form.studentNumber.value.trim(),
@@ -146,7 +148,7 @@
         });
         const result = await res.json();
         if (result.code === 1) {
-          msg.textContent = '注册成功，请登录！';
+          msg.textContent = '注册成功，请登录�?';
           msg.className = 'success';
           setTimeout(() => {
             window.location.href = 'log.html';
@@ -163,6 +165,13 @@
         btn.textContent = '注册';
       }
     });
+
+    window.addEventListener('storage', function(e) {
+    if (e.key === 'activeUserId') {
+        // 其它标签页切换了用户，这里可以刷新页面或弹出提示
+        window.location.reload();
+    }
+});
   </script>
 </body>
 </html>

@@ -97,6 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let privacyModal = null;
     function showPrivacyModal(){
         privacyModal = document.getElementById('privacy-modal');
+        privacyModal.classList.remove('hidden');
+        setTimeout(() => {
+            privacyContent.classList.remove('scale-95', 'opacity-0');
+            privacyContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
     }
     const privacyContent = document.getElementById('privacy-content');
     const closePrivacy = document.getElementById('close-privacy');
@@ -283,6 +288,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const token = sessionStorage.getItem('Token');
+const userId = sessionStorage.getItem('userId');
+
 async function fetchUserData() {
     const token = localStorage.getItem('Token');
     try {
@@ -394,5 +402,12 @@ function renderUserData(data) {
     document.getElementById('email').textContent = user.email;
     document.getElementById('enrollment-date').textContent = '2021年9月'; // 入学年份从学号推断
 }
+
+window.addEventListener('storage', function(e) {
+    if (e.key === 'activeUserId') {
+        // 其它标签页切换了用户，这里可以刷新页面或弹出提示
+        window.location.reload();
+    }
+});
 
 

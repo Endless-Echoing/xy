@@ -85,11 +85,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         // 处理响应
         if (result.code === 1) {
             showMessage('登录成功！', 'success');
-            localStorage.setItem('Token', result.data.token);
+            sessionStorage.setItem('Token', result.data.token);
+            sessionStorage.setItem('userId', result.data.id);
+            localStorage.setItem('activeUserId', result.data.id + '_' + Date.now());
 
-            if (window.axios) {
-                axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.token}`;
-            }
+            // 通知其它标签页有用户切换
+            localStorage.setItem('activeUserId', result.data.id + '_' + Date.now());
 
             setTimeout(() => {
                 hideLoginCard();
@@ -108,6 +109,20 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     } finally {
         loginBtn.disabled = false;
         loginBtn.innerHTML = '登录';
+    }
+});
+
+// 退出登录
+function logout() {
+    sessionStorage.removeItem('Token');
+    sessionStorage.removeItem('userId');
+    localStorage.setItem('activeUserId', 'logout_' + Date.now());
+}
+
+// 其它页面监听
+window.addEventListener('storage', function(e) {
+    if (e.key === 'activeUserId') {
+        window.location.reload();
     }
 });
 
